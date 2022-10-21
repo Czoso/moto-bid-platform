@@ -23,6 +23,7 @@ const routes: Routes = [
     path: 'main',
     component: MainPageComponent,
   },
+  { path: '**', component: LoginComponent },
   // {
   //   path: ':userId',
   //   component: UserComponent,
