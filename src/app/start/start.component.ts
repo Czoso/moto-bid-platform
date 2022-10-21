@@ -8,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class StartComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  public ngOnInit(): void {
+    console.log('init');
+  }
 }
