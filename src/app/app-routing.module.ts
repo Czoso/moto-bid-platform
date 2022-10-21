@@ -3,36 +3,36 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login';
 import { MainPageComponent } from './main-page';
 import { StartComponent } from './start';
+import { UserComponent, YourDataComponent } from './user';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'main',
     pathMatch: 'full',
   },
   {
-    path: '/login',
-    redirectTo: '/login',
+    path: 'login',
     component: LoginComponent,
   },
   {
-    path: '/start',
-    redirectTo: '/start',
+    path: 'start',
     component: StartComponent,
   },
   {
-    path: '/main',
-    redirectTo: '/main',
+    path: 'main',
     component: MainPageComponent,
   },
   // {
-  //   path: '/user',
-  //   component: RecipesComponent,
+  //   path: ':userId',
+  //   component: UserComponent,
   //   children: [
-  //     { path: '', component: RecipeStartComponent },
-  //     { path: 'new', component: RecipeEditComponent },
-  //     { path: ':id', component: RecipeDetailComponent },
-  //     { path: ':id/edit', component: RecipeEditComponent },
+  //     { path: 'your-data', component: YourDataComponent },
+  //     { path: 'your-auctions', component: YourAuctionsComponent },
+  //     { path: 'archival-auctions', component: ArchivalAuctionsComponent },
+  //     { path: 'followed-auctions', component: FollowedAuctionsComponent },
+  //     { path: 'previous-purchases', component: PreviousPurchasesComponent },
+  //     { path: 'messages', component: MessagesComponent },
   //   ],
   // },
 ];
