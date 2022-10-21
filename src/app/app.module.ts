@@ -5,8 +5,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginComponent } from './login';
+import { StartComponent } from './start';
+import { MainPageComponent } from './main-page/main-page.component';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, StartComponent, MainPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
