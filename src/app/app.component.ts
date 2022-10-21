@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'moto-bid-platform';
-  username = 'Paweł';
+  public title = 'moto-bid-platform';
+  public username = 'Paweł';
 
-  changeNameToGuzik() {
+  public changeNameToGuzik(): void {
     console.log('tak');
 
     this.username = 'Guzik';
