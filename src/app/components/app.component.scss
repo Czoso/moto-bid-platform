@@ -15,18 +15,9 @@
   z-index: -1;
 }
 
-.header {
-  display: flex;
-  justify-content: center;
-}
-
-.header-title {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffbe0b;
-}
-
-.button-container {
-  display: flex;
-  justify-content: space-between;
+.menu {
+  height: 60px;
+  margin-bottom: 0;
+  padding: 0;
+  background-color: rgba(235, 232, 237, 0.88);
 }
