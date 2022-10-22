@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public title = 'moto-bid-platform';
   public username = 'Paweł';
+  private name = 'costam';
 
   public changeNameToGuzik(): void {
     console.log('tak');

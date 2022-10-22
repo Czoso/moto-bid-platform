@@ -2,16 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { LoginComponent } from './login';
-import { StartComponent } from './start';
-import { MainPageComponent } from './main-page/main-page.component';
-import { UserComponent, YourDataComponent } from './user';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  AppComponent,
+  LoginComponent,
+  MainPageComponent,
+  RegisterComponent,
+  StartComponent,
+  UserComponent,
+  YourDataComponent,
+} from './components';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +25,7 @@ import { UserComponent, YourDataComponent } from './user';
     MainPageComponent,
     UserComponent,
     YourDataComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +35,8 @@ import { UserComponent, YourDataComponent } from './user';
     MatButtonModule,
     MatCardModule,
     MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [RouterModule],
   providers: [],
