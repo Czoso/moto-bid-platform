@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import {
   AppComponent,
   LoginComponent,
@@ -37,6 +38,7 @@ import {
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatToolbarModule,
   ],
   exports: [RouterModule],
   providers: [],
