@@ -1,3 +1,33 @@
-<p>
-  register works!
-</p>
+<div class="register-page">
+  <mat-card class="register-page__register-card">
+    <mat-card-title class="register-page__title">Register</mat-card-title>
+    <form [formGroup]="modelForm" class="register-page__form">
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email address</mat-label>
+        <input type="email" formControlName="email" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" type="password" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm password</mat-label>
+        <input formControlName="confirmPassword" type="password" matInput />
+        <mat-error *ngIf="modelForm.errors">{{passwordMatchError}}</mat-error>
+      </mat-form-field>
+    </form>
+    <div *ngIf="passwordMatchError">{{passwordMatchError}}</div>
+    <button
+      mat-raised-button
+      color="primary"
+      class="register-page__register-button"
+      [disabled]="modelForm.pristine || modelForm.status === 'INVALID'"
+      (click)="register()">
+      Sign Up
+    </button>
+  </mat-card>
+</div>
