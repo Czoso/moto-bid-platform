@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   private createForm(): void {
     this.modelForm = this.formBuilder.group({
-      username: ['dupa', Validators.required],
+      username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }

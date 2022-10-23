@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 
   &__login-card {
     display: flex;
@@ -32,5 +32,15 @@
 
   &__login-button {
     width: 100px;
+  }
+
+  &__forgot-password {
+    color: #673ab7;
+    margin-top: -30px;
+
+    &:hover {
+      cursor: pointer;
+      font-weight: 600;
+    }
   }
 }

@@ -15,4 +15,8 @@ export class AppComponent {
 
     this.username = 'Guzik';
   }
+
+  public someFunction(): void {
+    console.log('hej');
+  }
 }
