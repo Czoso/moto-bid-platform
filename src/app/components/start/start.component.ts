@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start',
@@ -6,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start.component.scss'],
 })
 export class StartComponent implements OnInit {
-  constructor() {}
+  public modelForm!: UntypedFormGroup;
+
+  constructor(private router: Router, private formBuilder: FormBuilder) {}
 
   public ngOnInit(): void {
-    console.log('init');
+    this.createForm();
+    // this.modelForm.addValidators(CustomValidators.MatchValidator('password', 'confirmPassword'));
+  }
+  public goToMainPage(): void {
+    this.router.navigate(['/main']);
+  }
+
+  private createForm(): void {
+    this.modelForm = this.formBuilder.group({
+      carName: ['', Validators.required],
+      priceFrom: [0, [Validators.required, Validators.min(0)]],
+      priceTo: [0, [Validators.required, Validators.min(0)]],
+    });
   }
 }
