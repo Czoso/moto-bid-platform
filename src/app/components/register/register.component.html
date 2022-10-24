@@ -10,22 +10,21 @@
         <mat-label>Email address</mat-label>
         <input type="email" formControlName="email" matInput />
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field (input)="passwordMatchError()" appearance="fill">
         <mat-label>Password</mat-label>
         <input formControlName="password" type="password" matInput />
       </mat-form-field>
-      <mat-form-field appearance="fill">
+      <mat-form-field (input)="passwordMatchError()" appearance="fill">
         <mat-label>Confirm password</mat-label>
         <input formControlName="confirmPassword" type="password" matInput />
-        <mat-error *ngIf="modelForm.errors">{{passwordMatchError}}</mat-error>
+        <mat-error class="register-page__error">{{mismatchErrorMessage}}</mat-error>
       </mat-form-field>
     </form>
-    <div *ngIf="passwordMatchError">{{passwordMatchError}}</div>
     <button
       mat-raised-button
       color="primary"
       class="register-page__register-button"
-      [disabled]="modelForm.pristine || modelForm.status === 'INVALID'"
+      [disabled]="modelForm.status === 'INVALID'"
       (click)="register()">
       Sign Up
     </button>

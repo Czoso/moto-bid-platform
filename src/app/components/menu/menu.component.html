@@ -1,0 +1,30 @@
+<mat-toolbar class="menu">
+  <div class="menu__left-side">
+    <div class="menu__side-wrapper">
+      <mat-icon
+        matTooltip="Auctions"
+        [routerLink]="['/auctions-page']"
+        aria-hidden="false"
+        fontIcon="directions_car"
+        class="menu__item menu__icon"></mat-icon>
+    </div>
+  </div>
+  <div class="menu__right-side">
+    <div class="menu__side-wrapper">
+      <mat-icon
+        matTooltip="Account"
+        aria-hidden="false"
+        fontIcon="person"
+        class="menu__item menu__icon"></mat-icon>
+      <mat-icon
+        matTooltip="Login"
+        [routerLink]="['/login']"
+        aria-hidden="false"
+        fontIcon="login"
+        class="menu__item menu__icon"></mat-icon>
+      <!-- <span class="menu__item menu__option" [routerLink]="['/login']">Login</span> -->
+      <span class="menu__line"></span>
+      <span class="menu__item menu__option" [routerLink]="['/register']">Register</span>
+    </div>
+  </div>
+</mat-toolbar>
