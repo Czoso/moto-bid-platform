@@ -1,21 +1,33 @@
 <div class="wrapper">
-  <mat-card class="inputs-container">
-    <mat-form-field class="inputs-container__car-name" appearance="fill">
-      <mat-label>Car Name</mat-label>
-      <input matInput placeholder="Enter Car Name" value="" />
-    </mat-form-field>
-    <mat-form-field class="inputs-container__car-price" appearance="fill">
-      <mat-label>Car Price From</mat-label>
-      <input matInput placeholder="Price From" value="" />
-    </mat-form-field>
-    <mat-form-field class="inputs-container__car-price" appearance="fill">
-      <mat-label>Car Price To</mat-label>
-      <input matInput placeholder="Price To" value="" />
-    </mat-form-field>
-    <div class="button-wrapper">
-      <button mat-raised-button color="primary" class="inputs-container__submit-button">
-        Let's Go
-      </button>
-    </div>
+  <mat-card class="card">
+    <form [formGroup]="modelForm" class="form">
+      <mat-form-field class="form__car-name" appearance="fill">
+        <mat-label>Car Name</mat-label>
+        <input formControlName="carName" matInput placeholder="Enter Car Name" value="" />
+      </mat-form-field>
+      <mat-form-field class="form__car-price" appearance="fill">
+        <mat-label>Car Price From</mat-label>
+        <input
+          type="number"
+          formControlName="priceFrom"
+          matInput
+          placeholder="Price From"
+          value="" />
+      </mat-form-field>
+      <mat-form-field class="form__car-price" appearance="fill">
+        <mat-label>Car Price To</mat-label>
+        <input type="number" formControlName="priceTo" matInput placeholder="price To" value="" />
+      </mat-form-field>
+      <div class="button-wrapper">
+        <button
+          [disabled]="modelForm.status === 'INVALID'"
+          mat-raised-button
+          color="primary"
+          class="form__submit-button"
+          (click)="goToMainPage()">
+          Let's Go
+        </button>
+      </div>
+    </form>
   </mat-card>
 </div>
