@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent, MainPageComponent, RegisterComponent, StartComponent } from './components';
+import {
+  AuctionsPageComponent,
+  LoginComponent,
+  MainPageComponent,
+  RegisterComponent,
+  StartComponent,
+} from './components';
 
 const routes: Routes = [
   {
@@ -23,6 +29,10 @@ const routes: Routes = [
   {
     path: 'main',
     component: MainPageComponent,
+  },
+  {
+    path: 'auctions-page',
+    component: AuctionsPageComponent,
   },
   { path: '**', component: LoginComponent },
   // {
