@@ -11,10 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AppService } from './components/app.service';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { RegisterService } from './components/register/register.service';
-import { LoginService } from './components/login/login.service';
+import { SharedModule } from './shared';
 import {
   AppComponent,
   AuctionsPageComponent,
@@ -49,10 +46,9 @@ import {
     MatToolbarModule,
     MatIconModule,
     MatTooltipModule,
-    MatSnackBarModule,
+    SharedModule,
   ],
   exports: [RouterModule],
-  providers: [AppService, MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
