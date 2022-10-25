@@ -1,0 +1,50 @@
+.user {
+  display: flex;
+  align-items: center;
+  height: 80vh;
+  padding: 12px;
+  gap: 12px;
+  margin-top: 5%;
+}
+.menu {
+  flex-basis: 20%;
+  height: 100%;
+  padding: 12px;
+  background-color: #ebe8ed;
+  border-radius: 20px;
+}
+.data {
+  flex-grow: 1;
+  height: 100%;
+  padding: 12px;
+  background-color: #ebe8ed;
+  border-radius: 20px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 20px;
+}
+.username {
+  width: 90%;
+  text-align: center;
+  color: #6200ee;
+  font-size: 24px;
+  line-height: 40px;
+  border-bottom: #6200ee solid 1px;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+  list-style: none;
+  &__option {
+    font-size: 18px;
+    color: #000000;
+  }
+}

@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,5 +51,6 @@ import {
   ],
   exports: [RouterModule],
   bootstrap: [AppComponent],
+  providers: [MatSnackBar],
 })
 export class AppModule {}

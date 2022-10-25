@@ -5,6 +5,7 @@ import {
   LoginComponent,
   RegisterComponent,
   StartComponent,
+  UserComponent,
 } from './components';
 
 const routes: Routes = [
@@ -30,18 +31,18 @@ const routes: Routes = [
     component: AuctionsPageComponent,
   },
   { path: '**', component: LoginComponent },
-  // {
-  //   path: ':userId',
-  //   component: UserComponent,
-  //   children: [
-  //     { path: 'your-data', component: YourDataComponent },
-  //     { path: 'your-auctions', component: YourAuctionsComponent },
-  //     { path: 'archival-auctions', component: ArchivalAuctionsComponent },
-  //     { path: 'followed-auctions', component: FollowedAuctionsComponent },
-  //     { path: 'previous-purchases', component: PreviousPurchasesComponent },
-  //     { path: 'messages', component: MessagesComponent },
-  //   ],
-  // },
+  {
+    path: 'user',
+    component: UserComponent,
+    // children: [
+    //   { path: 'your-data', component: YourDataComponent },
+    //   { path: 'your-auctions', component: YourAuctionsComponent },
+    //   { path: 'archival-auctions', component: ArchivalAuctionsComponent },
+    //   { path: 'followed-auctions', component: FollowedAuctionsComponent },
+    //   { path: 'previous-purchases', component: PreviousPurchasesComponent },
+    //   { path: 'messages', component: MessagesComponent },
+    // ],
+  },
 ];
 
 @NgModule({
