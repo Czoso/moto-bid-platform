@@ -12,7 +12,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppService } from './components/app.service';
-
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { RegisterService } from './components/register/register.service';
+import { LoginService } from './components/login/login.service';
 import {
   AppComponent,
   AuctionsPageComponent,
@@ -23,7 +25,6 @@ import {
   UserComponent,
   YourDataComponent,
 } from './components';
-import { RegisterService } from './components/register/register.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +49,10 @@ import { RegisterService } from './components/register/register.service';
     MatToolbarModule,
     MatIconModule,
     MatTooltipModule,
+    MatSnackBarModule,
   ],
   exports: [RouterModule],
-  providers: [AppService, RegisterService],
+  providers: [AppService, MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

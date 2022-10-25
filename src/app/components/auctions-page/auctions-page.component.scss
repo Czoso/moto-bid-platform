@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   height: 94vh;
-  padding: 20px;
+  padding: 12px;
   gap: 12px;
 
   &__section {
@@ -25,7 +25,7 @@
   }
 
   &__bottom-section {
-    height: 85%;
+    flex-grow: 1;
     border-radius: 20px;
   }
 
@@ -56,20 +56,18 @@
   height: 70px;
   width: 10%;
 }
-// .form {
-//   display: flex;
-//   align-items: center;
-//   gap: 22px;
-//   padding-top: 9px;
-//   &__car-name {
-//     margin-left: 22px;
-//     width: 350px;
-//   }
-//   &__car-price {
-//     width: 230px;
-//   }
-//   &__submit-button {
-//     height: 50px;
-//     width: 180px;
-//   }
-// }
+
+@media (max-width: 1440px) {
+  .auctions {
+    padding-bottom: 24px;
+    &__left-section {
+      flex-basis: 20%;
+      min-width: 200px;
+      height: calc(100%);
+      margin: 12px 0;
+    }
+    &__right-section {
+      padding: 8px 0;
+    }
+  }
+}
