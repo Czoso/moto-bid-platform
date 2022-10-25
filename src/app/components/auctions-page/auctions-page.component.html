@@ -1,3 +1,39 @@
-<p>
-  auctions-page works!
-</p>
+<div class="auctions">
+  <div class="auctions__section auctions__left-section"></div>
+  <div class="auctions__right-section">
+    <mat-card class="auctions__section auctions__top-filters">
+      <form class="form">
+        <mat-form-field class="form__field" appearance="fill">
+          <mat-label>Car Name</mat-label>
+          <input matInput placeholder="Enter Car Name" />
+        </mat-form-field>
+        <mat-form-field class="form__field" appearance="fill">
+          <mat-label>Price From</mat-label>
+          <input type="number" matInput placeholder="Enter price" />
+        </mat-form-field>
+        <mat-form-field class="form__field" appearance="fill">
+          <mat-label>Price To</mat-label>
+          <input type="number" matInput placeholder="Enter price" />
+        </mat-form-field>
+        <mat-form-field class="form__field" appearance="fill">
+          <mat-label>Year From</mat-label>
+          <input type="number" matInput placeholder="Enter year" />
+        </mat-form-field>
+        <mat-form-field class="form__field" appearance="fill">
+          <mat-label>Year To</mat-label>
+          <input type="number" matInput placeholder="Enter year" />
+        </mat-form-field>
+        <div class="button-wrapper">
+          <button
+            mat-raised-button
+            color="primary"
+            class="form__submit-button"
+            (click)="goToMainPage()">
+            Search
+          </button>
+        </div>
+      </form>
+    </mat-card>
+    <div class="auctions__section auctions__bottom-section"></div>
+  </div>
+</div>
