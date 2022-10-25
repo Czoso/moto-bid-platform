@@ -1,3 +1,4 @@
+import { RegisterService } from './register.service';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,16 +13,15 @@ export class RegisterComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
   public mismatchErrorMessage: string = '';
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private registerService: RegisterService
+  ) {}
 
   public ngOnInit(): void {
     this.createForm();
     this.modelForm.addValidators(CustomValidators.MatchValidator('password', 'confirmPassword'));
-  }
-
-  public register(): void {
-    this.router.navigate(['/main']);
-    this.modelForm.reset();
   }
 
   public passwordMatchError(): void {
@@ -31,6 +31,26 @@ export class RegisterComponent implements OnInit {
     } else {
       this.mismatchErrorMessage = '';
     }
+  }
+  public onSubmit(): void {
+    const formValue = this.modelForm.value;
+    console.log(formValue);
+    // this.registerService.createUser(formValue.email, formValue.password);
+    this.registerService
+      .createUser(formValue.email, formValue.password)
+      .then(res => {
+        console.log(res);
+        // Signed in
+        const user = res.user;
+        // ...
+      })
+      .catch(error => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+    this.router.navigate(['/main']);
+    this.modelForm.reset();
   }
 
   private createForm(): void {
