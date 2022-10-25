@@ -13,6 +13,10 @@
   background-color: #673ab7;
   opacity: 88%;
 
+  &__center {
+    color: #ebe8ed;
+  }
+
   &__side-wrapper {
     align-items: center;
     display: flex;
@@ -32,10 +36,5 @@
   &__icon {
     font-size: 30px;
     height: 100%;
-  }
-
-  &__line {
-    height: 30px;
-    border: 1px solid #ebe8ed;
   }
 }

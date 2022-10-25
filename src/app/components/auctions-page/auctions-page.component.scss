@@ -1,0 +1,75 @@
+.auctions {
+  display: flex;
+  align-items: center;
+  height: 94vh;
+  padding: 20px;
+  gap: 12px;
+
+  &__section {
+    background-color: #f4f2f5;
+    border-radius: 20px;
+  }
+
+  &__left-section {
+    min-width: 250px;
+    border-radius: 20px;
+    height: 750px;
+  }
+
+  &__right-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 4;
+    gap: 12px;
+    height: 750px;
+  }
+
+  &__bottom-section {
+    height: 85%;
+    border-radius: 20px;
+  }
+
+  &__top-filters {
+    height: 15%;
+    padding: 30px 16px 16px;
+    border-radius: 20px;
+  }
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+
+  &__field {
+    width: 17%;
+  }
+
+  &__submit-button {
+    height: 50px;
+    width: 100%;
+  }
+}
+
+.button-wrapper {
+  height: 70px;
+  width: 10%;
+}
+// .form {
+//   display: flex;
+//   align-items: center;
+//   gap: 22px;
+//   padding-top: 9px;
+//   &__car-name {
+//     margin-left: 22px;
+//     width: 350px;
+//   }
+//   &__car-price {
+//     width: 230px;
+//   }
+//   &__submit-button {
+//     height: 50px;
+//     width: 180px;
+//   }
+// }

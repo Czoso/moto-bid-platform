@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   AuctionsPageComponent,
   LoginComponent,
-  MainPageComponent,
   RegisterComponent,
   StartComponent,
 } from './components';
@@ -11,7 +10,7 @@ import {
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'main',
+    redirectTo: 'start',
     pathMatch: 'full',
   },
   {
@@ -25,10 +24,6 @@ const routes: Routes = [
   {
     path: 'start',
     component: StartComponent,
-  },
-  {
-    path: 'main',
-    component: MainPageComponent,
   },
   {
     path: 'auctions-page',
