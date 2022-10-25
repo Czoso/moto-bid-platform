@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   height: 94vh;
-  padding: 20px;
+  padding: 12px;
   gap: 12px;
 
   &__section {
@@ -39,23 +39,25 @@
     height: 23%;
     width: 100%;
     padding: 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    // transition: 0.2s;
+    &__bottom-section {
+      flex-grow: 1;
+      border-radius: 20px;
+      cursor: pointer;
+      // transition: 0.2s;
 
-    &:hover {
-      background-color: #673ab7;
-      color: #fff;
+      &:hover {
+        background-color: #673ab7;
+        color: #fff;
+      }
+    }
+
+    &__top-filters {
+      height: 15%;
+      padding: 30px 16px 16px;
+      border-radius: 20px;
     }
   }
-
-  &__top-filters {
-    height: 15%;
-    padding: 30px 16px 16px;
-    border-radius: 20px;
-  }
 }
-
 .form {
   display: flex;
   align-items: flex-start;
@@ -74,4 +76,19 @@
 
 .button-wrapper {
   width: 10%;
+}
+
+@media (max-width: 1440px) {
+  .auctions {
+    padding-bottom: 24px;
+    &__left-section {
+      flex-basis: 20%;
+      min-width: 200px;
+      height: calc(100%);
+      margin: 12px 0;
+    }
+    &__right-section {
+      padding: 8px 0;
+    }
+  }
 }

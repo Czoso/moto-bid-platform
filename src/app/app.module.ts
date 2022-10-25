@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { SharedModule } from './shared';
 import {
   AppComponent,
   AuctionsPageComponent,
@@ -21,8 +22,6 @@ import {
   UserComponent,
   YourDataComponent,
 } from './components';
-import { RegisterService } from './components/register/register.service';
-import { SharedModule } from './shared';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +49,6 @@ import { SharedModule } from './shared';
     SharedModule,
   ],
   exports: [RouterModule],
-  providers: [RegisterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
