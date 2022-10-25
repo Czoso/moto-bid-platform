@@ -1,0 +1,26 @@
+<div class="auction-tile">
+  <div
+    [ngStyle]="{'background-image': img ? 'url(../../../../assets/images/bmw.jpg)' : 'url()'}"
+    class="auction-tile__left-side"></div>
+  <div class="auction-tile__center">
+    <div class="auction-tile__top">BMW E39 1.6 Benzyna</div>
+    <div class="auction-tile__bottom">
+      <div class="auction-tile__info">ROCZNIK: 2015</div>
+      <div class="auction-tile__info">POJEMNOŚĆ SILNIKA: 1.6</div>
+      <div class="auction-tile__info">RODZAJ PALIWA: BENZYNA</div>
+      <div class="auction-tile__info">PRZEBIEG: 200 000 KM</div>
+      <div class="auction-tile__info">LOKALIZACJA: ŚWIEMINO</div>
+      <div class="auction-tile__info">TYP NADWOZIA: COUPE</div>
+    </div>
+  </div>
+  <div class="auction-tile__right-side">
+    <div class="auction-tile__price">200 000 PLN</div>
+    <div class="auction-tile__favorite">
+      <mat-icon
+        class="auction-tile__icon"
+        matTooltip="Add to favorite"
+        aria-hidden="false"
+        fontIcon="favorite"></mat-icon>
+    </div>
+  </div>
+</div>

@@ -24,9 +24,29 @@
     height: 750px;
   }
 
-  &__bottom-section {
+  &__tiles {
+    display: flex;
+    flex-wrap: wrap;
     height: 85%;
+    padding: 16px;
+    gap: 12px;
+    overflow: auto;
+  }
+
+  &__tile {
+    background-color: #fff;
+    border: 2px solid #ebe8ed;
+    height: 23%;
+    width: 100%;
+    padding: 12px;
     border-radius: 20px;
+    cursor: pointer;
+    // transition: 0.2s;
+
+    &:hover {
+      background-color: #673ab7;
+      color: #fff;
+    }
   }
 
   &__top-filters {
@@ -38,7 +58,7 @@
 
 .form {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   height: 100%;
 
@@ -53,23 +73,5 @@
 }
 
 .button-wrapper {
-  height: 70px;
   width: 10%;
 }
-// .form {
-//   display: flex;
-//   align-items: center;
-//   gap: 22px;
-//   padding-top: 9px;
-//   &__car-name {
-//     margin-left: 22px;
-//     width: 350px;
-//   }
-//   &__car-price {
-//     width: 230px;
-//   }
-//   &__submit-button {
-//     height: 50px;
-//     width: 180px;
-//   }
-// }

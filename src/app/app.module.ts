@@ -11,8 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AppService } from './components/app.service';
-
 import {
   AppComponent,
   AuctionsPageComponent,
@@ -24,6 +22,7 @@ import {
   YourDataComponent,
 } from './components';
 import { RegisterService } from './components/register/register.service';
+import { SharedModule } from './shared';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,9 +47,10 @@ import { RegisterService } from './components/register/register.service';
     MatToolbarModule,
     MatIconModule,
     MatTooltipModule,
+    SharedModule,
   ],
   exports: [RouterModule],
-  providers: [AppService, RegisterService],
+  providers: [RegisterService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
