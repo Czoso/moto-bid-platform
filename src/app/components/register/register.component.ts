@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
+  providers: [RegisterService],
 })
 export class RegisterComponent implements OnInit {
   public modelForm!: UntypedFormGroup;

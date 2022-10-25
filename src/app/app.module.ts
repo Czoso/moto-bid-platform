@@ -52,7 +52,7 @@ import {
     MatSnackBarModule,
   ],
   exports: [RouterModule],
-  providers: [AppService, RegisterService, MatSnackBar, LoginService],
+  providers: [AppService, MatSnackBar],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

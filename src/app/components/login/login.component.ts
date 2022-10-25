@@ -8,6 +8,7 @@ import { LoginService } from './login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  providers: [LoginService],
 })
 export class LoginComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
