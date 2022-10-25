@@ -1,24 +1,24 @@
 <div class="login-page">
   <mat-card class="login-page__login-card">
     <mat-card-title class="login-page__title">Login</mat-card-title>
-    <form [formGroup]="modelForm" class="login-page__form">
+    <form [formGroup]="modelForm" class="login-page__form" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="fill">
-        <mat-label>Username</mat-label>
-        <input formControlName="username" matInput />
+        <mat-label>email</mat-label>
+        <input formControlName="email" matInput />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
         <input formControlName="password" type="password" matInput />
       </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="login-page__login-button"
+        [disabled]="modelForm.pristine || modelForm.status === 'INVALID'">
+        Sign In
+      </button>
     </form>
-    <button
-      mat-raised-button
-      color="primary"
-      class="login-page__login-button"
-      [disabled]="modelForm.pristine || modelForm.status === 'INVALID'"
-      (click)="login()">
-      Sign In
-    </button>
     <span class="login-page__forgot-password" [routerLink]="['/register']">or Sign Up</span>
   </mat-card>
 </div>

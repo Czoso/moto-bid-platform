@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'src/app/utils';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private registerService: RegisterService
+    private registerService: RegisterService,
+    private snackBar: MatSnackBar
   ) {}
 
   public ngOnInit(): void {
@@ -35,19 +37,22 @@ export class RegisterComponent implements OnInit {
   public onSubmit(): void {
     const formValue = this.modelForm.value;
     console.log(formValue);
-    // this.registerService.createUser(formValue.email, formValue.password);
     this.registerService
       .createUser(formValue.email, formValue.password)
       .then(res => {
-        console.log(res);
-        // Signed in
         const user = res.user;
-        // ...
+        this.snackBar.open('User registered', 'Ok!', {
+          duration: 2500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
+        this.snackBar.open(error.message, 'Ok!', {
+          duration: 2500,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
       });
     this.router.navigate(['/main']);
     this.modelForm.reset();
