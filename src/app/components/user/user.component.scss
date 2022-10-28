@@ -23,14 +23,13 @@
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   height: 100%;
   padding: 12px;
   background-color: #ffffff;
   border-radius: 20px;
 }
 .username {
-  width: 90%;
   text-align: center;
   color: #6200ee;
   font-size: 24px;
@@ -44,7 +43,21 @@
   padding-top: 12px;
   list-style: none;
   &__option {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
     font-size: 18px;
     color: #000000;
   }
+  &__active {
+    color: #6200ee;
+    font-weight: bold;
+  }
+}
+.current-page-icon {
+  height: 20px;
+  text-align: center;
+  color: #6200ee;
+  line-height: 20px;
+  font-size: 12px;
 }

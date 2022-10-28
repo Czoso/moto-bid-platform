@@ -3,14 +3,66 @@
     <mat-card class="content">
       <span class="username">SIEPERSON</span>
       <ul class="options">
-        <li class="options__your-data options__option">Your Data</li>
-        <li class="options__your-auctions options__option">Your Auctions</li>
-        <li class="options__archival-auctions options__option">Archival Auctions</li>
-        <li class="options__followed-auctions options__option">Followed Auctions</li>
-        <li class="options__previous-purchases options__option">Previous Purchases</li>
-        <li class="options__messages options__option">Messages</li>
+        <li
+          class="options__your-data options__option"
+          [routerLink]="['/your-data']"
+          [ngClass]="{'options__active' :router.url==='/your-data'}">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/your-data'">
+            label_important
+          </mat-icon>
+          Your Data
+        </li>
+        <li
+          class="options__your-auctions options__option"
+          [routerLink]="['/your-auctions']"
+          [ngClass]="{'options__active' :router.url==='/your-auctions'}">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/your-auctions'">
+            label_important
+          </mat-icon>
+          Your Auctions
+        </li>
+        <li
+          class="options__archival-auctions options__option"
+          [routerLink]="['/archival-auctions']"
+          [ngClass]="{'options__active' :router.url==='/archival-auctions'}">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/archival-auctions'">
+            label_important
+          </mat-icon>
+          Archival Auctions
+        </li>
+        <li
+          class="options__followed-auctions options__option"
+          [routerLink]="['/followed-auctions']"
+          [ngClass]="{'options__active' :router.url==='/followed-auctions'}">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/followed-auctions'">
+            label_important
+          </mat-icon>
+          Followed Auctions
+        </li>
+        <li
+          class="options__previous-purchases options__option"
+          [routerLink]="['/previous-purchases']"
+          [ngClass]="{'options__active' :router.url==='/previous-purchases'}">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/previous-purchases'">
+            label_important
+          </mat-icon>
+          Previous Purchases
+        </li>
+        <li
+          class="options__messages options__option"
+          [routerLink]="['/messages']"
+          [ngClass]="{'options__active' :router.url==='/messages'}">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/messages'">
+            label_important
+          </mat-icon>
+          Messages
+        </li>
       </ul>
     </mat-card>
   </div>
-  <div class="data"><mat-card class="content"></mat-card></div>
+  <div class="data">
+    <mat-card class="content">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </div>
 </div>

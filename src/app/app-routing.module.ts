@@ -6,6 +6,7 @@ import {
   RegisterComponent,
   StartComponent,
   UserComponent,
+  YourDataComponent,
 } from './components';
 
 const routes: Routes = [
@@ -30,18 +31,18 @@ const routes: Routes = [
     path: 'auctions-page',
     component: AuctionsPageComponent,
   },
-  { path: '**', component: LoginComponent },
+  { path: '**', component: UserComponent },
   {
     path: 'user',
     component: UserComponent,
-    // children: [
-    //   { path: 'your-data', component: YourDataComponent },
-    //   { path: 'your-auctions', component: YourAuctionsComponent },
-    //   { path: 'archival-auctions', component: ArchivalAuctionsComponent },
-    //   { path: 'followed-auctions', component: FollowedAuctionsComponent },
-    //   { path: 'previous-purchases', component: PreviousPurchasesComponent },
-    //   { path: 'messages', component: MessagesComponent },
-    // ],
+    children: [
+      { path: 'your-data', component: YourDataComponent },
+      //   { path: 'your-auctions', component: YourAuctionsComponent },
+      //   { path: 'archival-auctions', component: ArchivalAuctionsComponent },
+      //   { path: 'followed-auctions', component: FollowedAuctionsComponent },
+      //   { path: 'previous-purchases', component: PreviousPurchasesComponent },
+      //   { path: 'messages', component: MessagesComponent },
+    ],
   },
 ];
 
