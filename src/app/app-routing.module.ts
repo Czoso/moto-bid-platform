@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
+  ArchivalAuctionsComponent,
   AuctionsPageComponent,
+  FollowedAuctionsComponent,
   LoginComponent,
+  MessagesComponent,
+  PreviousPurchasesComponent,
   RegisterComponent,
   StartComponent,
   UserComponent,
+  YourAuctionsComponent,
   YourDataComponent,
 } from './components';
 
@@ -37,11 +42,11 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       { path: 'your-data', component: YourDataComponent },
-      //   { path: 'your-auctions', component: YourAuctionsComponent },
-      //   { path: 'archival-auctions', component: ArchivalAuctionsComponent },
-      //   { path: 'followed-auctions', component: FollowedAuctionsComponent },
-      //   { path: 'previous-purchases', component: PreviousPurchasesComponent },
-      //   { path: 'messages', component: MessagesComponent },
+      { path: 'your-auctions', component: YourAuctionsComponent },
+      { path: 'archival-auctions', component: ArchivalAuctionsComponent },
+      { path: 'followed-auctions', component: FollowedAuctionsComponent },
+      { path: 'previous-purchases', component: PreviousPurchasesComponent },
+      { path: 'messages', component: MessagesComponent },
     ],
   },
 ];

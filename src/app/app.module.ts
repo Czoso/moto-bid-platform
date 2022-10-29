@@ -22,6 +22,11 @@ import {
   StartComponent,
   UserComponent,
   YourDataComponent,
+  YourAuctionsComponent,
+  PreviousPurchasesComponent,
+  MessagesComponent,
+  FollowedAuctionsComponent,
+  ArchivalAuctionsComponent,
 } from './components';
 @NgModule({
   declarations: [
@@ -33,6 +38,11 @@ import {
     RegisterComponent,
     MenuComponent,
     AuctionsPageComponent,
+    YourAuctionsComponent,
+    PreviousPurchasesComponent,
+    MessagesComponent,
+    FollowedAuctionsComponent,
+    ArchivalAuctionsComponent,
   ],
   imports: [
     BrowserModule,
