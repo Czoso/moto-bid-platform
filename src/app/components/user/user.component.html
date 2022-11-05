@@ -6,7 +6,7 @@
         <li
           class="options__your-data options__option"
           [routerLink]="['/user/your-data']"
-          [ngClass]="{'options__active' :router.url==='/user/your-data'}">
+          routerLinkActive="options__active">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-data'">
             label_important
           </mat-icon>
@@ -15,7 +15,7 @@
         <li
           class="options__your-auctions options__option"
           [routerLink]="['/user/your-auctions']"
-          [ngClass]="{'options__active' :router.url==='/user/your-auctions'}">
+          routerLinkActive="options__active">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-auctions'">
             label_important
           </mat-icon>
@@ -24,7 +24,7 @@
         <li
           class="options__archival-auctions options__option"
           [routerLink]="['/user/archival-auctions']"
-          [ngClass]="{'options__active' :router.url==='/user/archival-auctions'}">
+          routerLinkActive="options__active">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/archival-auctions'">
             label_important
           </mat-icon>
@@ -33,7 +33,7 @@
         <li
           class="options__followed-auctions options__option"
           [routerLink]="['/user/followed-auctions']"
-          [ngClass]="{'options__active' :router.url==='/user/followed-auctions'}">
+          routerLinkActive="options__active">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/followed-auctions'">
             label_important
           </mat-icon>
@@ -42,7 +42,7 @@
         <li
           class="options__previous-purchases options__option"
           [routerLink]="['/user/previous-purchases']"
-          [ngClass]="{'options__active' :router.url==='/user/previous-purchases'}">
+          routerLinkActive="options__active">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/previous-purchases'">
             label_important
           </mat-icon>
@@ -51,7 +51,7 @@
         <li
           class="options__messages options__option"
           [routerLink]="['/user/messages']"
-          [ngClass]="{'options__active' :router.url==='/user/messages'}">
+          routerLinkActive="options__active">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/messages'">
             label_important
           </mat-icon>

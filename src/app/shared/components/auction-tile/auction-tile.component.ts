@@ -10,6 +10,7 @@ export class AuctionTileComponent implements OnInit {
 
   public img = '../../../../assets/images/bmw.jpg';
   public productionYear = 2015;
+  public bmw = 'BMW E36 1.6 Benzyna';
 
   constructor() {}
 

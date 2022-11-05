@@ -1,6 +1,6 @@
 import { RegisterService } from './register.service';
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'src/app/utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegisterComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
-  public mismatchErrorMessage: string = '';
+  public mismatchErrorMessage = '';
 
   constructor(
     private router: Router,
@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
+        this.router.navigate(['/login']);
       })
       .catch(error => {
         this.snackBar.open(error.message, 'Ok!', {
@@ -54,8 +55,9 @@ export class RegisterComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
+        this.router.navigate(['/main']);
       });
-    this.router.navigate(['/main']);
+
     this.modelForm.reset();
   }
 

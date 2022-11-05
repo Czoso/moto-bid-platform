@@ -36,7 +36,6 @@ const routes: Routes = [
     path: 'auctions-page',
     component: AuctionsPageComponent,
   },
-  { path: '**', component: UserComponent },
   {
     path: 'user',
     component: UserComponent,
@@ -49,6 +48,7 @@ const routes: Routes = [
       { path: 'messages', component: MessagesComponent },
     ],
   },
+  { path: '**', component: UserComponent },
 ];
 
 @NgModule({
