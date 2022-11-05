@@ -1,1 +1,68 @@
-<p>user works!</p>
+<div class="user">
+  <div class="menu">
+    <mat-card class="content">
+      <span class="username">SIEPERSON</span>
+      <ul class="options">
+        <li
+          class="options__your-data options__option"
+          [routerLink]="['/user/your-data']"
+          routerLinkActive="options__active">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-data'">
+            label_important
+          </mat-icon>
+          Your Data
+        </li>
+        <li
+          class="options__your-auctions options__option"
+          [routerLink]="['/user/your-auctions']"
+          routerLinkActive="options__active">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-auctions'">
+            label_important
+          </mat-icon>
+          Your Auctions
+        </li>
+        <li
+          class="options__archival-auctions options__option"
+          [routerLink]="['/user/archival-auctions']"
+          routerLinkActive="options__active">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/archival-auctions'">
+            label_important
+          </mat-icon>
+          Archival Auctions
+        </li>
+        <li
+          class="options__followed-auctions options__option"
+          [routerLink]="['/user/followed-auctions']"
+          routerLinkActive="options__active">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/followed-auctions'">
+            label_important
+          </mat-icon>
+          Followed Auctions
+        </li>
+        <li
+          class="options__previous-purchases options__option"
+          [routerLink]="['/user/previous-purchases']"
+          routerLinkActive="options__active">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/previous-purchases'">
+            label_important
+          </mat-icon>
+          Previous Purchases
+        </li>
+        <li
+          class="options__messages options__option"
+          [routerLink]="['/user/messages']"
+          routerLinkActive="options__active">
+          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/messages'">
+            label_important
+          </mat-icon>
+          Messages
+        </li>
+      </ul>
+    </mat-card>
+  </div>
+  <div class="data">
+    <mat-card class="content">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </div>
+</div>

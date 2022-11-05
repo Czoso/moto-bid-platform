@@ -3,9 +3,12 @@
   width: 100%;
   height: 100%;
   gap: 12px;
+  padding: 12px;
+  border-radius: 20px;
   //   transition: 0.2s;
 
-  &:hover .auction-tile__info {
+  &:hover,
+  &:hover * {
     background-color: #673ab7;
     color: #fff;
   }
@@ -59,14 +62,9 @@
     justify-content: flex-end;
     align-items: center;
     height: 60%;
-    transition: 0.2s;
   }
 
   &__icon {
     color: #ccc;
-    transition: 0.2s;
-    &:hover {
-      color: #673ab7;
-    }
   }
 }

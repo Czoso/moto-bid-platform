@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
+  ArchivalAuctionsComponent,
   AuctionsPageComponent,
+  FollowedAuctionsComponent,
   LoginComponent,
+  MessagesComponent,
+  PreviousPurchasesComponent,
   RegisterComponent,
   StartComponent,
+  UserComponent,
+  YourAuctionsComponent,
+  YourDataComponent,
 } from './components';
 
 const routes: Routes = [
@@ -29,19 +36,19 @@ const routes: Routes = [
     path: 'auctions-page',
     component: AuctionsPageComponent,
   },
-  { path: '**', component: LoginComponent },
-  // {
-  //   path: ':userId',
-  //   component: UserComponent,
-  //   children: [
-  //     { path: 'your-data', component: YourDataComponent },
-  //     { path: 'your-auctions', component: YourAuctionsComponent },
-  //     { path: 'archival-auctions', component: ArchivalAuctionsComponent },
-  //     { path: 'followed-auctions', component: FollowedAuctionsComponent },
-  //     { path: 'previous-purchases', component: PreviousPurchasesComponent },
-  //     { path: 'messages', component: MessagesComponent },
-  //   ],
-  // },
+  {
+    path: 'user',
+    component: UserComponent,
+    children: [
+      { path: 'your-data', component: YourDataComponent },
+      { path: 'your-auctions', component: YourAuctionsComponent },
+      { path: 'archival-auctions', component: ArchivalAuctionsComponent },
+      { path: 'followed-auctions', component: FollowedAuctionsComponent },
+      { path: 'previous-purchases', component: PreviousPurchasesComponent },
+      { path: 'messages', component: MessagesComponent },
+    ],
+  },
+  { path: '**', component: UserComponent },
 ];
 
 @NgModule({
