@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuctionsPageService } from './auctions-page.service';
 
 @Component({
   selector: 'app-auctions-page',
@@ -9,13 +10,11 @@ import { Router } from '@angular/router';
 })
 export class AuctionsPageComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private apiService: AuctionsPageService) {}
 
   public ngOnInit(): void {
     this.createForm();
-  }
-  public goToMainPage(): void {
-    // this.router.navigate(['/main']);
+    const test = this.apiService.getAuctions();
   }
 
   private createForm(): void {

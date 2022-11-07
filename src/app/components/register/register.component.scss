@@ -23,10 +23,15 @@
   &__form {
     display: flex;
     flex-direction: column;
+    gap: 8px;
   }
 
   &__error {
     padding: 0;
+  }
+
+  &__register-button {
+    height: 40px;
   }
 }
 

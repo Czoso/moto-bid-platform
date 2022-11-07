@@ -9,16 +9,15 @@
         class="menu__item menu__icon"></mat-icon>
     </div>
   </div>
-  <!-- <div class="menu__center">Strona</div> -->
   <div class="menu__right-side">
     <div class="menu__side-wrapper">
       <mat-icon
         matTooltip="Account"
         [routerLink]="['/user']"
         aria-hidden="false"
-        [routerLink]="['/user']"
         fontIcon="person"
-        class="menu__item menu__icon"></mat-icon>
+        class="menu__item menu__icon"
+        *ngIf="currentUserId"></mat-icon>
       <mat-icon
         matTooltip="Login"
         [routerLink]="['/login']"
