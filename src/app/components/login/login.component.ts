@@ -1,3 +1,4 @@
+import { DatabaseService } from 'src/app/shared';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -8,28 +9,27 @@ import { LoginService } from './login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService],
+  providers: [LoginService, DatabaseService],
 })
 export class LoginComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
+  private currentUser: String = '';
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private databaseService: DatabaseService
   ) {}
 
   public ngOnInit(): void {
+    this.databaseService.currentUser.subscribe((user: string) => {
+      this.currentUser = user;
+    });
     this.createForm();
   }
-  public login(): void {
-    // this.router.navigate(['/main']);
-    this.modelForm.reset();
-  }
   public onSubmit(): void {
-    console.log('log');
     const formValue = this.modelForm.value;
-    console.log(formValue);
     this.loginService
       .loginUser(formValue.email, formValue.password)
       .then(res => {
@@ -39,6 +39,9 @@ export class LoginComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
+        this.databaseService.setUser(user.uid);
+        this.router.navigate(['/main']);
+        this.modelForm.reset();
       })
       .catch(error => {
         this.snackBar.open(error.message, 'Ok!', {
