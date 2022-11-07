@@ -9,11 +9,11 @@ import { LoginService } from './login.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [LoginService, DatabaseService],
+  providers: [LoginService],
 })
 export class LoginComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
-  private currentUser: String = '';
+  private currentUser = '';
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.databaseService.currentUser.subscribe((user: string) => {
+    this.databaseService.currentUser$.subscribe((user: string) => {
       this.currentUser = user;
     });
     this.createForm();

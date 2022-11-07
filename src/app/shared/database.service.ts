@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DatabaseService {
-  public currentUser = new Subject<string>();
+  public currentUser$ = new Subject<string>();
   private app: FirebaseApp = initializeApp(environment.firebase);
   private database: Database = getDatabase(this.app);
 
@@ -17,8 +17,6 @@ export class DatabaseService {
     return this.database;
   }
   public setUser(user: string): void {
-    console.log(this.currentUser);
-    this.currentUser.next(user);
-    console.log(this.currentUser);
+    this.currentUser$.next(user);
   }
 }
