@@ -8,7 +8,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DatabaseService {
-  public currentUser = new Subject<String>();
+  public currentUser = new Subject<string>();
   private app: FirebaseApp = initializeApp(environment.firebase);
   private database: Database = getDatabase(this.app);
 

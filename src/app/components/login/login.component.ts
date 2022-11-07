@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.databaseService.currentUser.subscribe((user: String) => {
+    this.databaseService.currentUser.subscribe((user: string) => {
       this.currentUser = user;
     });
     this.createForm();
@@ -39,9 +39,7 @@ export class LoginComponent implements OnInit {
           horizontalPosition: 'right',
           verticalPosition: 'top',
         });
-        console.log(this.currentUser);
         this.databaseService.setUser(user.uid);
-        console.log(this.currentUser);
         this.router.navigate(['/main']);
         this.modelForm.reset();
       })

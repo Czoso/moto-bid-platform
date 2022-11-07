@@ -8,15 +8,16 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   providers: [DatabaseService],
 })
 export class MenuComponent implements OnInit, OnDestroy {
-  public currentUser: String = '';
+  public currentUserId = '';
   constructor(private databaseService: DatabaseService) {}
   public ngOnInit(): void {
-    this.databaseService.currentUser.subscribe((user: String) => {
-      this.currentUser = user;
+    this.databaseService.currentUser.subscribe(userId => {
+      this.currentUserId = userId;
+      console.log(this.currentUserId);
     });
   }
   public log(): void {
-    console.log(this.currentUser);
+    console.log(this.currentUserId);
   }
   public ngOnDestroy(): void {
     this.databaseService.currentUser.unsubscribe();

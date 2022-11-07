@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       .createUser(formValue.email, formValue.password)
       .then(res => {
         const user = res.user;
-        set(ref(this.database.getDatabase(), 'users/' + user.uid), {
+        set(ref(this.database.getDatabase(), `users/${user.uid}`), {
           email: formValue.email,
           username: formValue.username,
           photoURL:
