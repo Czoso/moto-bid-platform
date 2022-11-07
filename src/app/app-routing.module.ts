@@ -48,7 +48,7 @@ const routes: Routes = [
       { path: 'messages', component: MessagesComponent },
     ],
   },
-  { path: '**', component: UserComponent },
+  { path: '**', component: AuctionsPageComponent },
 ];
 
 @NgModule({
