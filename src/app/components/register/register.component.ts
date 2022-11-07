@@ -11,7 +11,7 @@ import { DatabaseService } from 'src/app/shared';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [RegisterService, DatabaseService],
+  providers: [RegisterService],
 })
 export class RegisterComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
@@ -40,7 +40,6 @@ export class RegisterComponent implements OnInit {
   }
   public onSubmit(): void {
     const formValue = this.modelForm.value;
-    console.log(formValue);
     this.registerService
       .createUser(formValue.email, formValue.password)
       .then(res => {
@@ -51,6 +50,7 @@ export class RegisterComponent implements OnInit {
           photoURL:
             '//e-cdn-images.dzcdn.net/images/artist/a423dd42b7394eeacc882be8ac633eee/264x264-000000-80-0-0.jpg ',
         });
+        this.modelForm.reset();
         this.snackBar.open('User registered', 'Ok!', {
           duration: 2500,
           horizontalPosition: 'right',
@@ -65,8 +65,6 @@ export class RegisterComponent implements OnInit {
           verticalPosition: 'top',
         });
       });
-
-    this.modelForm.reset();
   }
 
   private createForm(): void {
