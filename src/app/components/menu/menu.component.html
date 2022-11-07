@@ -24,7 +24,8 @@
         [routerLink]="['/login']"
         aria-hidden="false"
         fontIcon="login"
-        class="menu__item menu__icon"></mat-icon>
+        class="menu__item menu__icon"
+        *ngIf="!currentUserId"></mat-icon>
     </div>
   </div>
 </mat-toolbar>

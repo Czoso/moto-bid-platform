@@ -1,7 +1,7 @@
 <div class="user">
   <div class="menu">
     <mat-card class="content">
-      <span class="username">SIEPERSON</span>
+      <span class="username">{{username}}</span>
       <ul class="options">
         <li
           class="options__your-data options__option"
@@ -61,8 +61,6 @@
     </mat-card>
   </div>
   <div class="data">
-    <mat-card class="content">
-      <router-outlet></router-outlet>
-    </mat-card>
+    <router-outlet></router-outlet>
   </div>
 </div>
