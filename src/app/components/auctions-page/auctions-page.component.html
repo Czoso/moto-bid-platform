@@ -29,19 +29,12 @@
       </form>
     </mat-card>
     <div class="auctions__section auctions__tiles">
-      <app-auction-tile class="auctions__tile" [auctionData]="[]"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
-      <app-auction-tile class="auctions__tile"></app-auction-tile>
+      <ng-container *ngIf="auctions?.length">
+        <app-auction-tile
+          *ngFor="let auction of auctions"
+          class="auctions__tile"
+          [auctionData]="auction"></app-auction-tile>
+      </ng-container>
     </div>
   </div>
 </div>

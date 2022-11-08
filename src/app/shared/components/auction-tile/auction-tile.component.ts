@@ -1,3 +1,4 @@
+import { Auction } from 'src/app/shared';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -5,16 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './auction-tile.component.html',
   styleUrls: ['./auction-tile.component.scss'],
 })
-export class AuctionTileComponent implements OnInit {
-  @Input() public auctionData: any;
-
-  public img = '../../../../assets/images/bmw.jpg';
-  public productionYear = 2015;
-  public bmw = 'BMW E36 1.6 Benzyna';
+export class AuctionTileComponent {
+  @Input() public auctionData!: Auction;
 
   constructor() {}
-
-  public ngOnInit(): void {
-    console.log('auction tile');
-  }
 }

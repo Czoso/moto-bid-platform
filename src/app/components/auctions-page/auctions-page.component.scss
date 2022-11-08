@@ -32,7 +32,7 @@
 
   &__tiles {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     height: 85%;
     padding: 16px;
     gap: 12px;

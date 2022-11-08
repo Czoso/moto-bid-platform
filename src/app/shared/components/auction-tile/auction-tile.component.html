@@ -1,19 +1,19 @@
-<div class="auction-tile">
+<div *ngIf="auctionData" class="auction-tile">
   <div
-    [ngStyle]="{'background-image': img ? 'url(https://scontent.fpoz3-1.fna.fbcdn.net/v/t1.15752-9/272841623_1157288275008905_5120465978465856637_n.png?_nc_cat=106&ccb=1-7&_nc_sid=ae9488&_nc_ohc=THKHdMLDCuEAX8rneaD&_nc_ht=scontent.fpoz3-1.fna&oh=03_AdTuZ0HioIEO7rFUw7K_KCH1xOlAEfbSq5mAN8x27KTGHQ&oe=637FBF1A)' : 'url()'}"
+    [ngStyle]="{'background-image': auctionData.imageSrc ? 'url(' + auctionData.imageSrc + ')' : 'url()'}"
     class="auction-tile__left-side"></div>
   <div class="auction-tile__center">
-    <div class="auction-tile__top">BMW E36 1.6 Benzyna</div>
+    <div class="auction-tile__top">{{auctionData.title}}</div>
     <div class="auction-tile__bottom">
-      <div class="auction-tile__info">ROCZNIK: 2015</div>
-      <div class="auction-tile__info">POJEMNOŚĆ SILNIKA: 1.6</div>
-      <div class="auction-tile__info">RODZAJ PALIWA: BENZYNA</div>
-      <div class="auction-tile__info">PRZEBIEG: 200 000 KM</div>
-      <div class="auction-tile__info">LOKALIZACJA: ŚWIEMINO</div>
-      <div class="auction-tile__info">TYP NADWOZIA: COUPE</div>
+      <div class="auction-tile__info">ROCZNIK: {{auctionData.car.productionYear}}</div>
+      <div class="auction-tile__info">POJEMNOŚĆ SILNIKA: {{auctionData.car.engineCapacity}}</div>
+      <div class="auction-tile__info">RODZAJ PALIWA: {{auctionData.car.fuelType}}</div>
+      <div class="auction-tile__info">PRZEBIEG: {{auctionData.car.mileage}}</div>
+      <div class="auction-tile__info">LOKALIZACJA: {{auctionData.car.location}}</div>
+      <div class="auction-tile__info">TYP NADWOZIA: {{auctionData.car.bodyType}}</div>
     </div>
   </div>
   <div class="auction-tile__right-side">
-    <div class="auction-tile__price">200 000 PLN</div>
+    <div class="auction-tile__price">{{auctionData.price}} PLN</div>
   </div>
 </div>
