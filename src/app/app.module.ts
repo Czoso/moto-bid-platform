@@ -27,6 +27,8 @@ import {
   MessagesComponent,
   FollowedAuctionsComponent,
   ArchivalAuctionsComponent,
+  ChatContentComponent,
+  ChatUsersComponent,
 } from './components';
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import {
     MessagesComponent,
     FollowedAuctionsComponent,
     ArchivalAuctionsComponent,
+    ChatContentComponent,
+    ChatUsersComponent,
   ],
   imports: [
     BrowserModule,
