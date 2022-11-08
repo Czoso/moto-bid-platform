@@ -1,6 +1,6 @@
+import { Auction } from '../../shared';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuctionsPageService } from './auctions-page.service';
 
 @Component({
@@ -10,11 +10,12 @@ import { AuctionsPageService } from './auctions-page.service';
 })
 export class AuctionsPageComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
+  public auctions?: Auction[] = [];
   constructor(private formBuilder: FormBuilder, private apiService: AuctionsPageService) {}
 
-  public ngOnInit(): void {
+  public async ngOnInit(): Promise<void> {
     this.createForm();
-    const test = this.apiService.getAuctions();
+    this.auctions = await this.apiService.getAuctions();
   }
 
   private createForm(): void {

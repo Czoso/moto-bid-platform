@@ -1,6 +1,6 @@
 import { DatabaseService } from 'src/app/shared';
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { get, ref } from 'firebase/database';
 
 @Component({
@@ -8,7 +8,7 @@ import { get, ref } from 'firebase/database';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
 })
-export class UserComponent implements OnInit, OnDestroy {
+export class UserComponent implements OnInit {
   public currentUserId = '';
   public username = '';
   constructor(public router: Router, private databaseService: DatabaseService) {}
@@ -22,8 +22,5 @@ export class UserComponent implements OnInit, OnDestroy {
         this.username = snapshot.val();
       }
     );
-  }
-  public ngOnDestroy(): void {
-    this.databaseService.currentUser$.unsubscribe();
   }
 }
