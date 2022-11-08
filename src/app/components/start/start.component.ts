@@ -14,7 +14,6 @@ export class StartComponent implements OnInit {
 
   public ngOnInit(): void {
     this.createForm();
-    // this.modelForm.addValidators(CustomValidators.MatchValidator('password', 'confirmPassword'));
   }
   public goToMainPage(): void {
     this.router.navigate(['/main']);

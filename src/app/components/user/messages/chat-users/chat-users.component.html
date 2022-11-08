@@ -1,3 +1,6 @@
-<p>
-  chat-users works!
-</p>
+<div class="wrapper">
+  <app-interlocutor
+    class="interlocutor"
+    *ngFor="let interlocutor of conversations"
+    [interlocutor]="interlocutor"></app-interlocutor>
+</div>

@@ -1,0 +1,26 @@
+.wrappper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.chat {
+  height: 100%;
+  border-radius: 10px;
+  background-color: #cccccc;
+}
+.chat-input {
+  width: 100%;
+  padding: 0 5px;
+  min-height: 30px;
+  background-color: RGBA(2, 2, 2, 0.08);
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  overflow-wrap: normal;
+}

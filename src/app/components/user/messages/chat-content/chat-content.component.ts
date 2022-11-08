@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-chat-content',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-content.component.scss'],
 })
 export class ChatContentComponent implements OnInit {
-  constructor() {}
+  public modelForm!: UntypedFormGroup;
+  constructor(private formBuilder: FormBuilder) {}
 
   public ngOnInit(): void {
-    console.log('init');
+    this.createForm();
+  }
+  public sendMessage(): void {}
+
+  private createForm(): void {
+    this.modelForm = this.formBuilder.group({
+      message: ['', Validators.required],
+    });
   }
 }
