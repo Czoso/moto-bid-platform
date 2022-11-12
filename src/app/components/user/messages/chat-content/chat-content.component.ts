@@ -1,3 +1,5 @@
+import { Chat } from 'src/app/shared/models';
+import { ChatService } from './../../../../shared/services/chat.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
@@ -8,12 +10,15 @@ import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 })
 export class ChatContentComponent implements OnInit {
   public modelForm!: UntypedFormGroup;
-  constructor(private formBuilder: FormBuilder) {}
+  public currentChat?: Chat;
+  constructor(private formBuilder: FormBuilder, private chatService: ChatService) {}
 
   public ngOnInit(): void {
     this.createForm();
+    this.chatService.currentChat$.subscribe((clickedChat: Chat) => {
+      this.currentChat = clickedChat;
+    });
   }
-  public sendMessage(): void {}
 
   private createForm(): void {
     this.modelForm = this.formBuilder.group({

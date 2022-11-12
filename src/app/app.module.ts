@@ -12,7 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DatabaseService, SharedModule } from './shared';
+import { ChatService, DatabaseService, SharedModule } from './shared';
 import {
   AppComponent,
   AuctionsPageComponent,
@@ -69,6 +69,6 @@ import {
   ],
   exports: [RouterModule],
   bootstrap: [AppComponent],
-  providers: [MatSnackBar, DatabaseService],
+  providers: [MatSnackBar, DatabaseService, ChatService],
 })
 export class AppModule {}

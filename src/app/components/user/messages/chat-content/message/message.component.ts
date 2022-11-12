@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Message, DatabaseService } from 'src/app/shared';
 
 @Component({
   selector: 'app-message',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent implements OnInit {
-  constructor() {}
+  @Input() public message?: Message;
+  public currentUserId = '';
+  constructor(public databaseService: DatabaseService) {}
 
   public ngOnInit(): void {
     console.log();
+    this.databaseService.currentUser$.subscribe((userId: string) => {
+      this.currentUserId = userId;
+    });
+  }
+  public userId(): void {
+    console.log(this.currentUserId);
   }
 }
