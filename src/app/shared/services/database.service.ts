@@ -1,7 +1,7 @@
 import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { FirebaseApp, initializeApp } from 'firebase/app';
-import { Database, getDatabase } from 'firebase/database';
+import { Database, get, getDatabase, ref } from 'firebase/database';
 import { ReplaySubject } from 'rxjs';
 
 @Injectable({
@@ -18,5 +18,8 @@ export class DatabaseService {
   }
   public setUser(user: string): void {
     this.currentUser$.next(user);
+  }
+  public getData(reference: string): Promise<any> {
+    return get(ref(this.database, reference));
   }
 }

@@ -1,10 +1,8 @@
-<div
-  class="wrapper"
-  [ngClass]="message?.interlocutor===this.currentUserId ? 'user': 'interlocutor'">
+<div class="wrapper" [ngClass]="message?.user===this.currentUserId ? 'user': 'interlocutor'">
   <mat-card
     class="message"
     (click)="userId()"
-    [ngClass]="message?.interlocutor===this.currentUserId ? 'user': 'interlocutor'">
+    [ngClass]="message?.user===this.currentUserId ? 'user': 'interlocutor'">
     {{message?.message}}
   </mat-card>
 </div>

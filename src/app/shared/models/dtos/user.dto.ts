@@ -10,6 +10,6 @@ export interface Chat {
   conversation: Message[];
 }
 export interface Message {
-  interlocutor: string;
+  user: string;
   message: string;
 }

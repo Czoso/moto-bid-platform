@@ -10,8 +10,8 @@ export class ChatUsersService {
       interlocutor: 'PTPPVAFCAafYlXq8cDDTlPkqOnE3',
       username: 'Szymon',
       conversation: [
-        { interlocutor: 'SBLXQSR1dQP6jrfX0LnKPMxu0y02', message: 'ty kurwo czarna' },
-        { interlocutor: 'PTPPVAFCAafYlXq8cDDTlPkqOnE3', message: 'ty kurwo biała' },
+        { user: 'SBLXQSR1dQP6jrfX0LnKPMxu0y02', message: 'ty kurwo czarna' },
+        { user: 'PTPPVAFCAafYlXq8cDDTlPkqOnE3', message: 'ty kurwo biała' },
       ],
     },
   ];
