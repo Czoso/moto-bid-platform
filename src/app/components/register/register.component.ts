@@ -47,6 +47,7 @@ export class RegisterComponent implements OnInit {
         const user = res.user;
         this.databaseService.getData(`database/users`).then(usersDB => {
           const newUser: User = {
+            userID: user.uid,
             email: formValue.email,
             username: formValue.username,
             photoURL:
@@ -54,12 +55,10 @@ export class RegisterComponent implements OnInit {
             chats: [],
           };
           if (usersDB.exists()) {
-            console.log('update');
             update(ref(this.databaseService.getDatabase(), `database`), {
               users: [...usersDB.val(), newUser],
             });
           } else {
-            console.log('set');
             set(ref(this.databaseService.getDatabase(), `database`), {
               users: [newUser],
             });

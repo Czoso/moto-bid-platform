@@ -1,4 +1,4 @@
-import { DatabaseService } from 'src/app/shared';
+import { DatabaseService, User } from 'src/app/shared';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { get, ref } from 'firebase/database';
@@ -17,10 +17,12 @@ export class UserComponent implements OnInit {
     this.databaseService.currentUser$.subscribe((userId: string) => {
       this.currentUserId = userId;
     });
-    get(ref(this.databaseService.getDatabase(), `users/${this.currentUserId}/username`)).then(
-      snapshot => {
-        this.username = snapshot.val();
-      }
-    );
+    get(ref(this.databaseService.getDatabase(), `database/users`)).then(usersDB => {
+      usersDB.val().forEach((singleUser: User) => {
+        if (singleUser.userID === this.currentUserId) {
+          this.username = singleUser.username;
+        }
+      });
+    });
   }
 }

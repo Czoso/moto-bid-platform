@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-messages',
@@ -6,5 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent {
+  @Input() public currentUserIndex!: number;
   constructor() {}
+  public getIndex(): void {}
 }
