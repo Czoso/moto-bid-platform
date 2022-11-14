@@ -15,7 +15,8 @@
         <li
           class="options__your-auctions options__option"
           [routerLink]="['/user/your-auctions']"
-          routerLinkActive="options__active">
+          routerLinkActive="options__active"
+          (click)="generateData()">
           <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-auctions'">
             label_important
           </mat-icon>

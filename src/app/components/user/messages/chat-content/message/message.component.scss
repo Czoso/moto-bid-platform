@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+.message {
+  width: auto;
+  padding: 10px 15px;
+  color: white;
+  margin-top: 5px;
+  text-shadow: black 1px 1px 1px;
+}
+div.user {
+  justify-content: flex-end;
+}
+div.interlocutor {
+  justify-content: flex-start;
+}
+mat-card.user {
+  background-color: #6200ee;
+}
+mat-card.interlocutor {
+  background-color: #777;
+}

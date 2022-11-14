@@ -1,3 +1,13 @@
-<p>
-  chat-content works!
-</p>
+<div class="wrappper">
+  <mat-card class="chat" *ngIf="interlocutorIndex">
+    <app-message
+      *ngFor="let message of currentChat?.conversation"
+      [message]="message"></app-message>
+  </mat-card>
+  <div class="input-wrapper">
+    <input [(ngModel)]="inputValue" type="text" matInput class="chat-input" />
+    <div class="input-submit">
+      <mat-icon class="current-page-icon" (click)="send()">label_important</mat-icon>
+    </div>
+  </div>
+</div>

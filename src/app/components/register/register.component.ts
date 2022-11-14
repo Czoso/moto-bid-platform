@@ -1,10 +1,11 @@
+import { User } from './../../shared/models/dtos/user.dto';
 import { RegisterService } from './register.service';
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidators } from 'src/app/utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ref, set } from 'firebase/database';
+import { ref, set, update } from 'firebase/database';
 import { DatabaseService } from 'src/app/shared';
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private registerService: RegisterService,
     private snackBar: MatSnackBar,
-    private database: DatabaseService
+    private databaseService: DatabaseService
   ) {}
 
   public ngOnInit(): void {
@@ -44,11 +45,24 @@ export class RegisterComponent implements OnInit {
       .createUser(formValue.email, formValue.password)
       .then(res => {
         const user = res.user;
-        set(ref(this.database.getDatabase(), `users/${user.uid}`), {
-          email: formValue.email,
-          username: formValue.username,
-          photoURL:
-            '//e-cdn-images.dzcdn.net/images/artist/a423dd42b7394eeacc882be8ac633eee/264x264-000000-80-0-0.jpg ',
+        this.databaseService.getData(`database/users`).then(usersDB => {
+          const newUser: User = {
+            userID: user.uid,
+            email: formValue.email,
+            username: formValue.username,
+            photoURL:
+              '//e-cdn-images.dzcdn.net/images/artist/a423dd42b7394eeacc882be8ac633eee/264x264-000000-80-0-0.jpg ',
+            chats: [],
+          };
+          if (usersDB.exists()) {
+            update(ref(this.databaseService.getDatabase(), `database`), {
+              users: [...usersDB.val(), newUser],
+            });
+          } else {
+            set(ref(this.databaseService.getDatabase(), `database`), {
+              users: [newUser],
+            });
+          }
         });
         this.modelForm.reset();
         this.snackBar.open('User registered', 'Ok!', {
