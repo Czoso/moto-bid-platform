@@ -1,3 +1,4 @@
 export * from './messages.component';
 export * from './chat-content';
-export * from './chat-users';
+
+export * from './interlocutor';

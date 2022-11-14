@@ -28,7 +28,6 @@ import {
   FollowedAuctionsComponent,
   ArchivalAuctionsComponent,
   ChatContentComponent,
-  ChatUsersComponent,
   MessageComponent,
   InterlocutorComponent,
 } from './components';
@@ -49,7 +48,6 @@ import {
     FollowedAuctionsComponent,
     ArchivalAuctionsComponent,
     ChatContentComponent,
-    ChatUsersComponent,
     InterlocutorComponent,
   ],
   imports: [
