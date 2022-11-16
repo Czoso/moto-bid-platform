@@ -8,8 +8,10 @@ import { Chat } from 'src/app/shared/models';
   styleUrls: ['./interlocutor.component.scss'],
 })
 export class InterlocutorComponent implements OnInit {
-  @Input() public interlocutor?: Chat;
+  @Input() public singleChat?: Chat;
+
   constructor(public chatService: ChatService) {}
+
   public ngOnInit(): void {
     console.log();
   }

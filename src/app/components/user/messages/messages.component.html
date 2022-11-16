@@ -2,10 +2,11 @@
   <mat-card class="tab users">
     <app-interlocutor
       class="interlocutor"
-      *ngFor="let interlocutor of conversations"
-      [interlocutor]="interlocutor"></app-interlocutor>
+      *ngFor="let singleChat of conversations"
+      [singleChat]="singleChat"
+      [routerLink]="[getIndex(singleChat.interlocutor)]"></app-interlocutor>
   </mat-card>
   <mat-card class="tab conversation">
-    <app-chat-content></app-chat-content>
+    <router-outlet></router-outlet>
   </mat-card>
 </div>

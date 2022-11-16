@@ -27,8 +27,8 @@ import {
   MessagesComponent,
   FollowedAuctionsComponent,
   ArchivalAuctionsComponent,
-  ChatContentComponent,
   MessageComponent,
+  ChatContentComponent,
   InterlocutorComponent,
 } from './components';
 @NgModule({

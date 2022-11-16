@@ -12,7 +12,6 @@ export class MessageComponent implements OnInit {
   constructor(public databaseService: DatabaseService) {}
 
   public ngOnInit(): void {
-    console.log();
     this.databaseService.currentUser$.subscribe((userId: string) => {
       this.currentUserId = userId;
     });

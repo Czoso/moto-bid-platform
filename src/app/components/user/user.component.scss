@@ -53,7 +53,7 @@
       opacity: 60%;
     }
   }
-  &__active {
+  &--active {
     animation: click 0.4s forwards;
     color: #6200ee;
     font-weight: bold;
@@ -65,6 +65,9 @@
   color: #6200ee;
   line-height: 20px;
   font-size: 12px;
+}
+app-chat-content {
+  height: 100%;
 }
 @keyframes click {
   from {
