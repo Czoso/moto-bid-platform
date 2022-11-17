@@ -1,3 +1,4 @@
+import { AuctionDetailsComponent } from './components/auctions-page/auction-details/auction-details.component';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
@@ -37,6 +38,7 @@ const routes: Routes = [
     path: 'auctions-page',
     component: AuctionsPageComponent,
   },
+  { path: 'auction-details/:auctionId', component: AuctionDetailsComponent },
   {
     path: 'user/:userId',
     component: UserComponent,

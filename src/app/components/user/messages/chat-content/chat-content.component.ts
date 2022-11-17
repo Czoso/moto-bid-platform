@@ -1,7 +1,7 @@
-import { Chat, User } from 'src/app/shared/models';
-import { Component, Input, OnInit } from '@angular/core';
+import { Chat } from 'src/app/shared/models';
+import { Component, OnInit } from '@angular/core';
 import { ChatService, DatabaseService, Message } from 'src/app/shared';
-import { get, ref, set, update } from 'firebase/database';
+import { ref, set, update } from 'firebase/database';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,13 +10,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./chat-content.component.scss'],
 })
 export class ChatContentComponent implements OnInit {
-  public userIndex = this.route.snapshot.params['userId'];
+  public userIndex = this.route.parent?.parent?.snapshot.params['userId'];
   public interlocutorIndex = this.route.snapshot.params['interlocutorId'];
   public inputValue: string = '';
   public currentChat?: Chat;
   private userChatIndex?: number;
   private interlocutorChatIndex?: number;
   private currentUser?: string;
+  private usersDB?: Array<any>;
   constructor(
     private chatService: ChatService,
     private databaseService: DatabaseService,
@@ -24,35 +25,38 @@ export class ChatContentComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.databaseService.currentUser$.subscribe((userId: string) => {
+      this.currentUser = userId;
+    });
     this.chatService.currentChat$.subscribe((clickedChat: Chat) => {
       this.currentChat = clickedChat;
     });
-    this.databaseService.currentUser$.subscribe((currentUserId: string) => {
-      this.currentUser = currentUserId;
+    this.databaseService.getData(`database/users`).then(usersDB => {
+      this.usersDB = usersDB.val();
     });
   }
   public send(): void {
-    this.databaseService.getData(`database/users`).then(usersDB => {
+    if (this.usersDB !== undefined) {
       if (this.currentUser) {
         const message: Message = { user: this.currentUser, message: this.inputValue };
         if (this.userIndex) {
-          usersDB.val()[this.userIndex].chats.forEach((singleChat: Chat, chatIndex: number) => {
+          this.usersDB[this.userIndex].chats.forEach((singleChat: Chat, chatIndex: number) => {
             if (singleChat.interlocutor === this.currentChat?.interlocutor && this.currentChat) {
               this.userChatIndex = chatIndex;
             }
           });
         }
-        usersDB
-          .val()
-          [this.interlocutorIndex].chats.forEach((singleChat: Chat, chatIndex: number) => {
+        this.usersDB[this.interlocutorIndex].chats.forEach(
+          (singleChat: Chat, chatIndex: number) => {
             if (singleChat.interlocutor === this.currentUser) {
               this.interlocutorChatIndex = chatIndex;
             }
-          });
-        if (this.userChatIndex) {
-          const previousChat = usersDB.val()[this.userIndex].chats[this.userChatIndex].conversation;
-          if (usersDB.val()[this.userIndex].chats !== undefined) {
-            if (this.userChatIndex!) {
+          }
+        );
+        if (this.userChatIndex !== undefined) {
+          const previousChat = this.usersDB[this.userIndex].chats[this.userChatIndex].conversation;
+          if (this.usersDB[this.userIndex].chats !== undefined) {
+            if (this.userChatIndex !== undefined) {
               update(
                 ref(
                   this.databaseService.getDatabase(),
@@ -62,7 +66,7 @@ export class ChatContentComponent implements OnInit {
                   conversation: [...previousChat, message],
                 }
               );
-              if (this.interlocutorChatIndex) {
+              if (this.interlocutorChatIndex !== undefined) {
                 update(
                   ref(
                     this.databaseService.getDatabase(),
@@ -74,8 +78,9 @@ export class ChatContentComponent implements OnInit {
                 );
               }
             }
+            this.currentChat?.conversation.push(message);
           } else {
-            if (this.userChatIndex) {
+            if (this.userChatIndex !== undefined) {
               set(
                 ref(
                   this.databaseService.getDatabase(),
@@ -85,7 +90,7 @@ export class ChatContentComponent implements OnInit {
                   conversation: [message],
                 }
               );
-              if (this.interlocutorChatIndex) {
+              if (this.interlocutorChatIndex !== undefined) {
                 set(
                   ref(
                     this.databaseService.getDatabase(),
@@ -96,10 +101,15 @@ export class ChatContentComponent implements OnInit {
                   }
                 );
               }
+              this.currentChat?.conversation.push(message);
             }
           }
         }
       }
+    }
+    this.databaseService.getData(`database/users`).then(usersDB => {
+      this.usersDB = usersDB.val();
     });
+    this.inputValue = '';
   }
 }

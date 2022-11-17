@@ -5,46 +5,56 @@
       <ul class="options">
         <li
           class="options__your-data options__option"
-          [routerLink]="['/user/your-data']"
+          [routerLink]="['your-data']"
           routerLinkActive="options--active">
-          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-data'">
+          <mat-icon
+            class="current-page-icon"
+            *ngIf="router.url==='/user/'+ this.route.snapshot.params['userId']+'/your-data'">
             label_important
           </mat-icon>
           Your Data
         </li>
         <li
           class="options__your-auctions options__option"
-          [routerLink]="['/user/your-auctions']"
+          [routerLink]="['your-auctions']"
           routerLinkActive="options--active"
           (click)="generateData()">
-          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/your-auctions'">
+          <mat-icon
+            class="current-page-icon"
+            *ngIf="router.url==='/user/'+ this.route.snapshot.params['userId']+'/your-auctions'">
             label_important
           </mat-icon>
           Your Auctions
         </li>
         <li
           class="options__archival-auctions options__option"
-          [routerLink]="['/user/archival-auctions']"
+          [routerLink]="['archival-auctions']"
           routerLinkActive="options--active">
-          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/archival-auctions'">
+          <mat-icon
+            class="current-page-icon"
+            *ngIf="router.url==='/user/'+ this.route.snapshot.params['userId']+'/archival-auctions'">
             label_important
           </mat-icon>
           Archival Auctions
         </li>
         <li
           class="options__followed-auctions options__option"
-          [routerLink]="['/user/followed-auctions']"
+          [routerLink]="['followed-auctions']"
           routerLinkActive="options--active">
-          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/followed-auctions'">
+          <mat-icon
+            class="current-page-icon"
+            *ngIf="router.url==='/user/'+ this.route.snapshot.params['userId']+'/followed-auctions'">
             label_important
           </mat-icon>
           Followed Auctions
         </li>
         <li
           class="options__previous-purchases options__option"
-          [routerLink]="['/user/previous-purchases']"
+          [routerLink]="['previous-purchases']"
           routerLinkActive="options--active">
-          <mat-icon class="current-page-icon" *ngIf="router.url==='/user/previous-purchases'">
+          <mat-icon
+            class="current-page-icon"
+            *ngIf="router.url==='/user/'+ this.route.snapshot.params['userId']+'/previous-purchases'">
             label_important
           </mat-icon>
           Previous Purchases
