@@ -1,5 +1,6 @@
 export interface Auction {
   userId: string;
+  auctionId: number;
   title: string;
   car: Car;
   price: number;

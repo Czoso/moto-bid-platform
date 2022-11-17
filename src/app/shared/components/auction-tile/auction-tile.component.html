@@ -1,4 +1,7 @@
-<div *ngIf="auctionData" class="auction-tile">
+<div
+  *ngIf="auctionData"
+  [routerLink]="['/auction-details', auctionData.auctionId]"
+  class="auction-tile">
   <div
     [ngStyle]="{'background-image': auctionData.imageSrc ? 'url(' + auctionData.imageSrc + ')' : 'url()'}"
     class="auction-tile__left-side"></div>

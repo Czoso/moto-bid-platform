@@ -5,13 +5,14 @@ import { Auction } from '../../shared';
 @Injectable({
   providedIn: 'root',
 })
-export class AuctionsPageService {
+export class AuctionsService {
   constructor() {}
 
   public getAuctions(): Promise<Auction[] | undefined> {
     return of([
       {
-        userId: 'userId1',
+        userId: 'uId1',
+        auctionId: 111,
         title: 'BMW E36 1.8 Benzyna',
         car: {
           productionYear: 1997,
@@ -28,7 +29,8 @@ export class AuctionsPageService {
         imageSrc: 'https://a.allegroimg.com/original/11418b/39340d32458fb28ad6e064c01109',
       },
       {
-        userId: 'userId2',
+        userId: 'uId2',
+        auctionId: 222,
         title: 'BMW E90 2.5 Diesel',
         car: {
           productionYear: 2007,
@@ -45,5 +47,9 @@ export class AuctionsPageService {
         imageSrc: 'https://www.wyborkierowcow.pl/wp-content/uploads/2021/05/BMW-serii-3-E90-3.jpg',
       },
     ]).toPromise();
+  }
+  public async getSingleAuction(auctionId: number): Promise<Auction | undefined> {
+    const auctions = await this.getAuctions();
+    return auctions?.find(auction => auction.auctionId === auctionId);
   }
 }
