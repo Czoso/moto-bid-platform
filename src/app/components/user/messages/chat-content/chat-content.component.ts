@@ -1,7 +1,8 @@
-import { Chat, User } from 'src/app/shared/models';
-import { Component, Input, OnInit } from '@angular/core';
+import { Chat } from 'src/app/shared/models';
+import { Component, OnInit } from '@angular/core';
 import { ChatService, DatabaseService, Message } from 'src/app/shared';
-import { get, ref, set, update } from 'firebase/database';
+import { ref, set, update } from 'firebase/database';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat-content',
@@ -9,84 +10,106 @@ import { get, ref, set, update } from 'firebase/database';
   styleUrls: ['./chat-content.component.scss'],
 })
 export class ChatContentComponent implements OnInit {
-  @Input() public userIndex!: number;
+  public userIndex = this.route.parent?.parent?.snapshot.params['userId'];
+  public interlocutorIndex = this.route.snapshot.params['interlocutorId'];
   public inputValue: string = '';
-  public currentChat!: Chat;
-  public interlocutorIndex!: number;
-  private currentUser!: string;
-  constructor(private chatService: ChatService, private databaseService: DatabaseService) {}
+  public currentChat?: Chat;
+  private userChatIndex?: number;
+  private interlocutorChatIndex?: number;
+  private currentUser?: string;
+  private usersDB?: Array<any>;
+  constructor(
+    private chatService: ChatService,
+    private databaseService: DatabaseService,
+    private route: ActivatedRoute
+  ) {}
 
   public ngOnInit(): void {
+    this.databaseService.currentUser$.subscribe((userId: string) => {
+      this.currentUser = userId;
+    });
     this.chatService.currentChat$.subscribe((clickedChat: Chat) => {
       this.currentChat = clickedChat;
     });
-    this.databaseService.currentUser$.subscribe((currentUserId: string) => {
-      this.currentUser = currentUserId;
+    this.databaseService.getData(`database/users`).then(usersDB => {
+      this.usersDB = usersDB.val();
     });
   }
   public send(): void {
-    this.databaseService.getData(`database/users`).then(usersDB => {
-      const message: Message = { user: this.currentUser, message: this.inputValue };
-      let userChatIndex: number;
-      let interlocutorChatIndex: number;
-      usersDB.val().forEach((singleUser: User, singleUserIndex: number) => {
-        if (singleUser.userID === this.currentChat.interlocutor) {
-          this.interlocutorIndex = singleUserIndex;
+    if (this.usersDB !== undefined) {
+      if (this.currentUser) {
+        const message: Message = { user: this.currentUser, message: this.inputValue };
+        if (this.userIndex) {
+          this.usersDB[this.userIndex].chats.forEach((singleChat: Chat, chatIndex: number) => {
+            if (singleChat.interlocutor === this.currentChat?.interlocutor && this.currentChat) {
+              this.userChatIndex = chatIndex;
+            }
+          });
         }
-      });
-      usersDB.val()[this.userIndex!].chats.forEach((singleChat: Chat, chatIndex: number) => {
-        if (singleChat.interlocutor === this.currentChat.interlocutor) {
-          userChatIndex = chatIndex;
+        this.usersDB[this.interlocutorIndex].chats.forEach(
+          (singleChat: Chat, chatIndex: number) => {
+            if (singleChat.interlocutor === this.currentUser) {
+              this.interlocutorChatIndex = chatIndex;
+            }
+          }
+        );
+        if (this.userChatIndex !== undefined) {
+          const previousChat = this.usersDB[this.userIndex].chats[this.userChatIndex].conversation;
+          if (this.usersDB[this.userIndex].chats !== undefined) {
+            if (this.userChatIndex !== undefined) {
+              update(
+                ref(
+                  this.databaseService.getDatabase(),
+                  `database/users/${this.userIndex}/chats/${this.userChatIndex}`
+                ),
+                {
+                  conversation: [...previousChat, message],
+                }
+              );
+              if (this.interlocutorChatIndex !== undefined) {
+                update(
+                  ref(
+                    this.databaseService.getDatabase(),
+                    `database/users/${this.interlocutorIndex}/chats/${this.interlocutorChatIndex}`
+                  ),
+                  {
+                    conversation: [...previousChat, message],
+                  }
+                );
+              }
+            }
+            this.currentChat?.conversation.push(message);
+          } else {
+            if (this.userChatIndex !== undefined) {
+              set(
+                ref(
+                  this.databaseService.getDatabase(),
+                  `database/users/${this.userIndex}/chats/${this.userChatIndex}`
+                ),
+                {
+                  conversation: [message],
+                }
+              );
+              if (this.interlocutorChatIndex !== undefined) {
+                set(
+                  ref(
+                    this.databaseService.getDatabase(),
+                    `database/users/${this.interlocutorIndex}/chats/${this.interlocutorChatIndex}`
+                  ),
+                  {
+                    conversation: [message],
+                  }
+                );
+              }
+              this.currentChat?.conversation.push(message);
+            }
+          }
         }
-      });
-      usersDB
-        .val()
-        [this.interlocutorIndex!].chats.forEach((singleChat: Chat, chatIndex: number) => {
-          if (singleChat.interlocutor === this.currentUser) {
-            interlocutorChatIndex = chatIndex;
-          }
-        });
-      const previousChat = usersDB.val()[this.userIndex!].chats[userChatIndex!].conversation;
-
-      if (usersDB.val()[this.userIndex!].chats !== undefined) {
-        update(
-          ref(
-            this.databaseService.getDatabase(),
-            `database/users/${this.userIndex!}/chats/${userChatIndex!}`
-          ),
-          {
-            conversation: [...previousChat, message],
-          }
-        );
-        update(
-          ref(
-            this.databaseService.getDatabase(),
-            `database/users/${this.interlocutorIndex!}/chats/${interlocutorChatIndex!}`
-          ),
-          {
-            conversation: [...previousChat, message],
-          }
-        );
-      } else {
-        set(
-          ref(
-            this.databaseService.getDatabase(),
-            `database/users/${this.userIndex!}/chats/${userChatIndex!}`
-          ),
-          {
-            conversation: [message],
-          }
-        );
-        set(
-          ref(
-            this.databaseService.getDatabase(),
-            `database/users/${this.interlocutorIndex!}/chats/${interlocutorChatIndex!}`
-          ),
-          {
-            conversation: [message],
-          }
-        );
       }
+    }
+    this.databaseService.getData(`database/users`).then(usersDB => {
+      this.usersDB = usersDB.val();
     });
+    this.inputValue = '';
   }
 }

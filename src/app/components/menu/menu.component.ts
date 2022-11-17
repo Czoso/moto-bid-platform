@@ -1,5 +1,5 @@
-import { DatabaseService } from 'src/app/shared';
-import { Component, OnInit } from '@angular/core';
+import { DatabaseService, User } from 'src/app/shared';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -8,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
   public currentUserId = '';
+  public currentUserIndex: number = -1;
   constructor(private databaseService: DatabaseService) {}
   public ngOnInit(): void {
     this.databaseService.currentUser$.subscribe(userId => {
       this.currentUserId = userId;
+    });
+    this.databaseService.currentUserIndex$.subscribe(userId => {
+      this.currentUserIndex = userId;
     });
   }
 }

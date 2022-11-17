@@ -1,9 +1,10 @@
 import { AuctionDetailsComponent } from './components/auctions-page/auction-details/auction-details.component';
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {
   ArchivalAuctionsComponent,
   AuctionsPageComponent,
+  ChatContentComponent,
   FollowedAuctionsComponent,
   LoginComponent,
   MessagesComponent,
@@ -39,7 +40,7 @@ const routes: Routes = [
   },
   { path: 'auction-details/:auctionId', component: AuctionDetailsComponent },
   {
-    path: 'user',
+    path: 'user/:userId',
     component: UserComponent,
     children: [
       { path: 'your-data', component: YourDataComponent },
@@ -47,7 +48,11 @@ const routes: Routes = [
       { path: 'archival-auctions', component: ArchivalAuctionsComponent },
       { path: 'followed-auctions', component: FollowedAuctionsComponent },
       { path: 'previous-purchases', component: PreviousPurchasesComponent },
-      { path: 'messages', component: MessagesComponent },
+      {
+        path: 'messages',
+        component: MessagesComponent,
+        children: [{ path: ':interlocutorId', component: ChatContentComponent }],
+      },
     ],
   },
   { path: '**', component: AuctionsPageComponent },
