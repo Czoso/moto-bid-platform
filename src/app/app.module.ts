@@ -27,8 +27,8 @@ import {
   MessagesComponent,
   FollowedAuctionsComponent,
   ArchivalAuctionsComponent,
-  ChatContentComponent,
   MessageComponent,
+  ChatContentComponent,
   InterlocutorComponent,
   AuctionDetailsComponent,
 } from './components';
